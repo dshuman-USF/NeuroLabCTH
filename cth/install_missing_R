@@ -1,0 +1,55 @@
+#!/usr/bin/Rscript
+
+# This R script will install missing packages as part of the post.inst processing.
+# There has to be a version argument for local packages that is passed in from
+# post.inst
+
+argv <- commandArgs (trailingOnly=T)
+if (length(argv) < 1)
+{
+   cat("Missing version argument to install_missing_R\n")
+   quit(save='no')
+}
+newver=argv[1]
+
+instPackage <- function(p) 
+{
+   if (!is.element(p, installed.packages()[,1]))
+   {
+      cat(p,"is missing, installing. . .\n")
+      install.packages(p, dep = TRUE, repos="http://cran.us.r-project.org")
+   }
+   else
+      cat(p,"already installed.\n")
+}
+
+instlocPackage <- function(p) 
+{
+   pkgname=sprintf("%s%s%s%s",p,"_",newver,".tar.gz")
+      # ugly fixed path, can we somehow determine this at runtime?
+   pkg <-  sprintf("%s%s","/usr/local/share/cth-cluster/",pkgname);
+
+   if (!is.element(p, installed.packages()[,1]))
+   {
+      install.packages(pkg, repos=NULL)
+   }
+   else
+   {
+      ver = packageDescription(p,fields="Version")
+      if (compareVersion(ver,newver) != 0)
+      {
+         remove.packages(p)
+         install.packages(pkg, repos=NULL)
+      }
+      else
+         cat(p,"already installed and is up to date.\n")
+   }
+}
+
+instPackage("SparseM")
+instPackage("AER")
+instPackage("colorspace")
+instPackage("Rcpp")
+
+instlocPackage("csplinedesx")
+instlocPackage("glmfitpx")

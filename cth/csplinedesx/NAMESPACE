@@ -1,0 +1,2 @@
+useDynLib(csplinedesx)
+export(csplinedesx)

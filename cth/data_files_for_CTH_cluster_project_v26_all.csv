@@ -1,0 +1,43 @@
+BTD/EDT files for the CTH cluster project//This list is of files containing all cells in vagotomized animals///////////
+DO NOT SORT THIS LIST. ADD NEW FILES AT THE BOTTOM WITH A BLANK LINE SEPARATING THEM FROM THE EXTANT LIST./////////////
+path/filename/boundary code/length of control period (secs)/# cells/INFO_FILE folder/INFO_FILE filename/CHANGE_CODES folder/CHANGE_CODES filename/carotidCO2 stim code/carotidCO2 window/vertebralCO2 stim code/vertebralCO2 window/notes
+/dsk5/sarahtemp/2003-12-11_001/2003-12-11-FINAL-NO-Gasps-3.edt/58/2100/116//raid/experiments/2003-12-11_001/2003-12-11_001_info_curr.xls///51/60/52/90/
+/dsk5/sarahtemp/k04m2/k04m2REDO2_FINALv2.bdt/55////raid/experiments/k04m2/k04m2_info_curr.xls///52/60/51/90/
+/dsk5/sarahtemp/k04m4/k04m4REDO2_FINALfv2.bdt/56////raid/experiments/k04m4/k04m4_info_curr.xls///52/60/51/90/
+/dsk5/sarahtemp/2003-05-22_001/2003-05-22_001-v7f.edt/56////raid/experiments/2003-05-22_001/2003-05-22_001_info_curr.xls///51/60/53/90/
+/dsk5/sarahtemp/2003-08-14_001/2003-08-14_001-v7f.edt/56////raid/experiments/2003-08-14_001/2003-08-14_001_info_curr.xls///51/60/53/90/
+/dsk5/sarahtemp/2013-11-07_001/2013-11-07_001-v13f.edt/53////raid/experiments/2013-11-07_001/2013-11-07_001_info_curr.xls///51/60///
+/dsk5/sarahtemp/2013-03-19_001/2013-03-19_001-v6f.edt/54////raid/experiments/2013-03-19_001/2013-03-19_001_info_curr.xls///51/60///
+/dsk5/sarahtemp/2013-05-09_001/2013-05-09_001-v6f.edt/57////raid/experiments/2013-05-09_001/2013-05-09_001_info_curr.xls///52/60///
+/dsk5/sarahtemp/2013-08-01_003/2013-08-01_003-new-v4f.edt/53////raid/experiments/2013-08-01_003/2013-08-01_003_info_curr.xls///51/60///
+/dsk5/sarahtemp/2013-05-02_001/2013-05-02_001-v4f.edt/53////raid/experiments/2013-05-02_001/2013-05-02_001_info_curr.xls///52/60///
+/dsk5/sarahtemp/k57m1/k57m1-FINAL-FULL-3.bdt/59/1825/77//raid/experiments/k57m1/k57m1_info_curr.xls///51/60/52/90/
+/dsk5/sarahtemp/2013-11-19_001/2013-11-19_001-v5f.edt/54////raid/experiments/2013-11-19_001/2013-11-19_001_info_curr.xls///52/60/51/90/
+/dsk5/sarahtemp/2013-12-05_001/2013-12-05_001-v6f.edt/56////raid/experiments/2013-12-05_001/2013-12-05_001_info_curr.xls///51/60///
+/dsk5/sarahtemp/2013-12-17_002/2013-12-17_002-v8f.edt/53////raid/experiments/2013-12-17_002/2013-12-17_002_info_curr.xls///51/60///
+/dsk5/sarahtemp/2014-02-18_001/2014-02-18_001-v8.edt/51////raid/experiments/2014-02-18_001/2014-02-18_001_info_curr.xls///52/60///
+/dsk5/sarahtemp/2014-02-25_001/2014-02-25_001-v6f.edt/53////raid/experiments/2014-02-25_001/2014-02-25_001_info_curr.xls///51/60///
+/dsk5/sarahtemp/2014-03-18_001/2014-03-18_001-v6f.edt/53////raid/experiments/2014-03-18_001/2014-03-18_001_info_curr.xls///51/60/52/90/
+/dsk5/sarahtemp/2014-04-10_001/2014-04-10_001-v6f.edt/55////raid/experiments/2014-04-10_001/2014-04-10_001_info_curr.xls///51/60///
+/dsk5/sarahtemp/2013-05-02_003/POST-VAGOTOMY/2013-05-02_003-POSTVX-v4.edt/58////raid/experiments/2013-05-02_003/2013-05-02_003_info_curr.xls///55/60/52/90/
+/dsk5/sarahtemp/2002-03-07_001/2002-03-07_001-v6.edt/58////raid/experiments/2002-03-07_001/2002-03-07_001_info_curr.xls///51/90/53/90/
+/dsk5/sarahtemp/2002-07-25_001/POSTVX/2002-07-25_001-POSTVX-v5f.edt/57////raid/experiments/2002-07-25_001/2002-07-25_001_info_curr.xls/////52/90/
+/dsk5/sarahtemp/2014-01-14_001/2014-01-14_001-v9f.edt/51////raid/experiments/2014-01-14_001/2014-01-14_001_info_curr.xls///52/60///
+/dsk5/sarahtemp/2014-03-04_001/2014-03-04_001-v10f.edt/53////raid/experiments/2014-03-04_001/2014-03-04_001_info_curr.xls/////52/90/
+/////////////
+/dsk5/sarahtemp/2006-01-26_001/2006-01-26-RECUT-FINAL-v9.edt/54/1836/64//raid/experiments/2006-01-26_001/2006-01-26_001_info_orig.xls/////51/90/
+/dsk5/sarahtemp/2006-08-09_001/2006-08-09_001-FINAL3.edt/54/2002/42//raid/experiments/2006-08-09_001/2006-08-09_001_info_curr.xls///52/60/51/90/
+/dsk5/sarahtemp/2006-09-28_001/2006-09-28_001_FINAL.edt/54/2181/71//raid/experiments/2006-09-28_001/2006-09-28_001_info_curr.xls///52/60/51/90/
+/dsk5/sarahtemp/2006-09-28_002/2006-09-28_002_FINAL.edt/54/2440/51//raid/experiments/2006-09-28_002/2006-09-28_002_info_curr.xls///52/60/51/90/
+/dsk5/sarahtemp/2006-12-06_001/2006-12-06_001_FINAL.edt/54/2217/27//raid/experiments/2006-12-06_001/2006-12-06_001_info_curr.xls///52/60///
+/dsk5/sarahtemp/2006-12-13_001/2006-12-13_001_FINAL-v2.edt/54/2040/41//raid/experiments/2006-12-13_001/2006-12-13_001_info_curr.xls///52/60/51/90/
+/dsk5/sarahtemp/k46m1/POSTVAGOTOMY/k46m1-POSTVX-FINAL-7.edt/51/289/62//raid/experiments/k46m1/k46m1_info_orig.xls///53/60///
+/dsk5/sarahtemp/k47m1/POST-VAGOTOMY/k47m1-POSTVX-FINALf-2.edt/53/929/77//raid/experiments/k47m1/k47m1_info_orig.xls///51/60///
+/dsk5/sarahtemp/k17m1/k17m1-FINAL.bdt/56/342/46//raid/experiments/k17m1/k17m1_info_orig.xls///52/60/51/90/no changes
+/dsk5/cth_cluster_proj/s73m1REDO2-cthc-all-cells.bdt/51/662/48//raid/experiments/s73m1/s73m1final_info_orig.xls//dsk5/cth_cluster_proj/s73m1-updated-cell-codes/55/60/58/90/changed a lot of ID codes using changecodes.pl; gedit file is s73m1-updated-cell-codes
+/dsk5/cth_cluster_proj/k08m1and2finalf2-cthc-all-cells.bdt/51/625/50//raid/experiments/k08m12/k08m12_info_curr.xls//dsk5/cth_cluster_proj/k08m1and2-updated-ID-codes/////changed a lot of ID codes using changecodes.pl; gedit file is k08m1and2-updated-cell-codes
+/dsk5/cth_cluster_proj/k08m34ALLf-cthc-all-cells.bdt/61/781/62//raid/experiments/k08m34/k08m34_info_curr.xls//dsk5/cth_cluster_proj/k08m3and4-updated-codes/////had to retrieve code 51 from cthc file and change it to boundary code 61 in here
+/dsk5/sarahtemp/2004-01-08_001/2004-01-08_001-FINAL-no-gasp.edt/61/779/73//raid/experiments/2004-01-08_001/2004-01-08_001_info_orig.xls/////53/90/no changes
+/dsk5/cth_cluster_proj/2005-02-17-FINAL-NO-GASPSb-cthc-all-cells.edt/61/2405/93//raid/experiments/2005-02-17_001/2005-02-17_001_info_orig.xls///////had to add in the boundary code in this experiment since code 51 and 52 are marking something else
+/dsk5/sarahtemp/2012-06-14_001/POST-VAGOTOMY/2012-06-14_001-POSTVX.edt/55/2012/43//raid/experiments/2012-06-14_001/2012-06-14_001_info_orig.xls///53/60/53/90/no changes
+/dsk5/sarahtemp/2012-06-14_002/2012-06-14_002-FINAL-H2Af.edt/55/1710/51//raid/experiments/2012-06-14_002/2012-06-14_002_info_orig.xls///////no changes

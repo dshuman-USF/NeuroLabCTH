@@ -1,0 +1,441 @@
+2019-12-18  dshuman@usf.edu
+
+	* cth_cluster.cpp: If permission problems stop the creation of
+	cth_cluster.tmp, print more info and stop trying to create the file.
+
+2018-10-25  dale@health.usf.edu
+
+	* debian/control: bump up dendency on octave-cth to current version.
+
+2018-10-23  dale@health.usf.edu
+
+	* cthgui.cpp: rework how archetypes are selected. Now drag and drop name to
+	              an one line edit box. There are too many archetypes to have
+					  a separate file system tree for them all. This makes adding 
+					  new archetypes much easier.
+	* configure.ac: bump to 1.3.14
+
+2018-09-28  dale@health.usf.edu
+
+	* cth_cluster.cpp: add in exp name to blank creation and removal.
+	* configure.ac: bump to 1.3.13.
+
+2018-09-27  dale@health.usf.edu
+
+	* debian/rules: remove --with autotools-dev, has been deprecated and
+	is no longer needed.
+
+2018-09-26  dale@health.usf.edu
+
+	* cth_cluster.cpp: Fix bugs in larreflex one ticks. Change default file
+	name fragments to improve clarity of what is actually in the .cth files.
+	* configure.ac: bump 10 1.3.12.
+
+2018-09-24  dale@health.usf.edu
+
+	* cth_cluster.cpp: Mod to get one tick bins working for lareflex. The
+	intervals are set by SW, so they are all the same, which broke the one tick
+	algorithm. Works now with just one interval. 
+	* cth_cluster.cpp:  Releasing 1.3.11.
+
+2018-09-21  dale@health.usf.edu
+
+	* cth_cluster.cpp: Fix bug, did not gen blank cths for lareflex case.
+
+2018-09-19  dale@health.usf.edu
+
+	* cth_cluster.h: Add in elements for lareflex experiment types.
+	* cth_cluster.cpp: And code to support it.
+	* configure.ac: bump up to 1.3.11
+	* Makefile.am: New version 37 .xls files for lareflex.
+
+2018-08-21  dale@health.usf.edu
+
+	* cth_cluster.cpp: fix bug for swallow files. Since we use the ctl period
+	as the swallow ctl period, if there was a missing control cth, a blank
+	control cth was not created. Now it is.
+
+2018-08-20  dale@health.usf.edu
+
+	* cth_impl.cpp: add in support of Include Flats In Clustering option.
+	* configure.ac: bump up to 1.3.10
+
+2018-07-25  dale@health.usf.edu
+
+	* Makefile.am: add in KKH's swallow archetype .type file.
+
+2018-07-20  dale@health.usf.edu
+
+	* cth_cluster.cpp: add in creating a blank sibling cth for ctl/stim swallow 
+	cases if sibling does not exist.
+	* configure.ac: bump to version 1.3.9
+
+2018-06-28  dale@health.usf.edu
+
+	* cth_cluster.cpp: fix bug where program never terminated if missing
+	swallow1 codes. Add in some helpful output as to the specifices.
+
+2018-05-16  dale@health.usf.edu
+
+	* cthgui.cpp: adjust the layout, the scroll right button was clipped.
+	* configure.ac: bump up to 1.3.7.
+
+2018-04-27  dale@health.usf.edu
+
+	* debian/control: update octave-cth version to current. Accept no
+	substitutes.
+
+2018-03-28  dale@health.usf.edu
+
+	* cth_env: add in Swallow archetype file.
+	* Makefile.am: ditto, forgot it, need new version.
+	* configure.ac: bump to version 1.3.6.
+
+2018-03-26  dale@health.usf.edu
+
+	* run_cthgui: New release. Killer bug in this file, line to load a package
+	was commented out.
+	* configure.ac: bump up to 1.3.5.
+
+2018-03-15  dale@health.usf.edu
+
+	* configure.ac: bump to 1.3.4. Preparing for package release.
+
+2017-12-22  dale@health.usf.edu
+
+	* cth_cluster.cpp: support for swallow. There may be more types to come, so
+	this is referred to as swallow1 in the code.
+
+2017-10-26  dale@health.usf.edu
+
+	* debian/postinst.template: Move old tar file to /lab/SOURCES/old.
+
+2017-07-28  dale@health.usf.edu
+
+	* run_cthgui: new version of octave requires explicit package loading.
+	* run_cthterm: ditto
+	* configure.ac: bump up to 1.3.3
+
+2017-06-06  dale@health.usf.edu
+
+	* cth_cluster.cpp: find bug in curve var. The R program writes out just 4
+	bytes if there is no curve solution. The octave code expects the zeros to
+	be the number of bins plus 3 for extra info. Now, if only 4 chars from R,
+	we pad it to be the number of bins.
+
+2017-06-02  dale@health.usf.edu
+
+	* cth_env: mods for current files and env.
+
+2017-06-01  dale@health.usf.edu
+
+	* cth_cells.pl: Ignore the below, mod to find the dir this executes from,
+	which CAN be /usr/local/bin, or a local file...whereever, and use that as
+	the path to get the other .pl files.
+	* cth_xls2csv.pl: Modify to not print out blank rows. Some spreads have
+	many rows with nothing in them, and it confuses people to see a screen or
+	two of just commas. Only cosmetic, but keep the customer satisfied.
+
+2017-05-31  dale@health.usf.edu
+
+	* cth_cells.pl: Modify this so it can run from /usr/local/bin. Confuses
+	users to have to have multiple copies in local dirs.
+	* cth_data.pl: renamed data.pl to cth_data.pl to avoid collisions with the
+	real data.pl. cth_cells.pl expects this to be in /usr/local/bin.
+	* cth_xls2csv.pl: this is a renamed xls2csv.pl which is installed in
+	/usr/local/bin, for reasons mentioned above.
+
+2017-05-30  dale@health.usf.edu
+
+	* cth_cluster.cpp: find bug in how ctl/stim cths are normalized. Should use
+	max from both periods, not per-period. All ctl/stim cth pairs must be 
+	normalized the same
+
+	Also, make the default # of bins 100, since that is what we always do now.
+
+2017-05-25  dale@health.usf.edu
+
+	* cth_cluster.cpp: remove default .xls input file. It keeps breaking and
+	moving around and confuses people. Now an input filename is mandatory.
+
+2017-05-04  dale@health.usf.edu
+
+	* configure.ac: Bump up to 1.3.0 for release. This is the first version
+	that includes archetype clustering.
+
+2017-04-20  dale@health.usf.edu
+
+	* cth_cluster.cpp: Add in -v flag so experiements can be filtered by
+	vagotomized, non-vagotmized, or not filtered at all.
+
+2017-04-10  dale@health.usf.edu
+
+	* cth_impl.cpp: Make Create Plots and Cluster with archetypes equal. This
+	avoids having to first do a clustering run on the Octave size of things
+	before we can do an archetype clustering operation.
+
+2017-03-29  dale@health.usf.edu
+
+	* debian/control: need to do a 1.2.9 release, forgot to depend on
+	octave-cth.
+	* configure.ac: bump up to 1.2.9. No code changes.
+
+2017-03-23  dale@health.usf.edu
+
+	* configure.ac: bump up to 1.2.8
+	This version has mods to support creating and using archetypes. 
+	An option to draw large plot and dendrogram windows for screen captures was
+	added. 
+	Additional help and tooltip text was added.
+	* cth_cluster.cpp: Mods to support ctl and stim periods. 
+
+2017-01-05  dale@health.usf.edu
+
+	* configure.ac: 1.2.6 release.
+	* Makefile.am: Line commented out and should not have been.
+	* configure.ac: 1.2.7 release to fix above mistake.
+
+2017-01-04  dale@health.usf.edu
+
+	* cth_cluster.cpp: We only need to write one *_to_r.txt output file for
+	curve fitting since we put all the cths for all periods into it. Some UI
+	output text added to say what is happening.
+
+2016-12-20  dale@health.usf.edu
+
+	* cth_project.m: catch error instead of exiting when trying to load bogus file.
+	* cth_env: use symbolic links instead of making local copies. Files are
+	rather large and user can't modify them from cth_gui program.
+	* configure.ac: bump up to 1.2.6. Bug fix release.
+
+2016-12-13  dale@health.usf.edu
+
+	* debian/rules: hardening_wrapper stuff now handled by rules file
+	* configure.ac: release of 1.2.5
+
+2016-12-01  dale@health.usf.edu
+
+	* configure.ac: bump up to 1.2.5, skipping few since last one to sync with
+	octave-cth.
+
+2016-09-07  dale@health.usf.edu
+
+	* cth_cluster.h: change MAX_CYCLE_TIME from 10 to 30 secs, MIN_CYCLE_TIME
+	from 1.0 to 0.5 seconds.  Based on real data that is in the .5 - 30 range
+	that should be included in the CTHs.
+
+2016-04-21  dale@health.usf.edu
+
+	* Makefile.am: remove pnppcth.cc, do not use it and for some reason it
+	fails to compile on ubuntu (but does on debian, which has newer boost
+	libs.)
+
+2016-04-19  dale@health.usf.edu
+
+	* Makefile.am: add in targets to automatically rebuild the demo .cth files
+	if cth_cluster is newer.
+	* cth_cells.pl: add to makefile, we need to go gen stereotaxic coordinates
+
+2016-04-14  dale@health.usf.edu
+
+	* Makefile.am: unversion the allexp_from_r.txt file.  It hasn't changed and
+	it's a pain to keep renaming the file.
+
+2016-04-13  dale@health.usf.edu
+
+	* debian/postinst.template: add in install_missing_octave
+
+2016-04-12  dale@health.usf.edu
+
+	* cth_impl.cpp: very ugly hack to deal with spaces in dir and file names.
+
+2016-03-02  dale@health.usf.edu
+
+	* configure.ac: Notes for version 1.2.1
+		There is now an Export To Atlas button in the GUI.  This exports a file
+		that the atlas program can read [TODO:  this probably isn't true--what
+		really reads in the info?]. The exported information is intended to be
+		used to draw the CTH neurons at their stereotaxic coordinates and to
+		color them based on what cluster they are in.
+
+		The cth summary window was not drawing the one tick bin plots correctly.
+		Fixed.
+
+		The cth summary window did not work correctly on exported subsets of
+		clusters.  Fixed
+
+		If running the cth_project function in terminal mode, a non-existent
+		function was being called. Fixed.
+
+		The example oneexp-100.cth file contained all of the experiments, not
+		just one. Fixed. If you have already created a working environment, you
+		may want to run cth_env again to pick up the new file, or look at the
+		script in /usr/local/bin/cth_env and copy it by hand.
+
+		The file that contains all of the iterations of the curve fitting
+		process has been moved to a new package, the cth-curves package.  These
+		have not changed since 1.2.0 and it is a very large file to carry around
+		in the cth package.  It is likely that the cth package will change much
+		more often than the curves package.
+
+      The GUI has been tweaked, as follows:
+
+			The buttons on the left were rearranged so more commonly used buttons
+			occur higher in the list.
+
+			A -d debug flag was added that shows the Connect To Octave button.
+			This button is almost always not needed and is now hidden by default.
+
+			The high contrast color option and the 2D/3D projection options are
+			rarely used and have been changed to checkboxes and moved to the
+			Rarely Used Options box.  The high contrast color choice has been
+			renamed to Color Blind Friendly because that is what it is.
+
+         The GUI elements move around now as the window is resized.
+
+			The size and location of the window and its maximized state is now
+			kept in a configuration file in the user's home directory in
+			.config/cthgui/cthgui.conf.
+
+         A color blind friendly palette was added.
+
+	* cthgui.h: remove unused pdist methods.
+
+2016-02-12  dale@health.usf.edu
+
+	* cth_cluster.h: Add comment noting that the bdt time field is shorter.
+	Code works, so nothing to fix.
+	* oneexp-100.cth: regenerate this, the provious version used all the
+	points, not just the ones from one experiment.
+
+2016-01-22  dale@health.usf.edu
+
+	* Makefile.am: Move curve stuff to its own package, cth-curves
+
+2016-01-15  dale@health.usf.edu
+
+	* configure.ac: bump up to 1.2.1
+
+2016-01-14  dale@health.usf.edu
+
+	* configure.ac: Release 1.2.0
+	* debian/control: Depends on octave-cth >= 1.2.0
+
+2015-11-18  dale@health.usf.edu
+
+	* Makefile.am: add in support for R package creation.
+	* debian/postinst.template: add in support for installing the local R
+	packages.
+	* install_missing_R: this runs as part of post.inst processing to ensure
+	that we have all the R packages we need, including our local ones.
+
+2015-09-29  dale@health.usf.edu
+
+	* cth_cluster.h: Add in support for writing and reading R files using a key for
+	each CTH.
+	* cth_cluster.cpp: Implementation of above.
+
+2015-09-16  dale@health.usf.edu
+
+	* cth_curve.R: modify how index into refit bins is calculated to avoid
+	underflows.
+
+2015-09-09  dale@health.usf.edu
+
+	* Makefile.am: change PIE to PIC for g++ v 5.
+
+2015-08-03  dale@health.usf.edu
+
+	* Makefile.am: Current list of files is in
+				      data_files_for_CTH_cluster_project_v20.xls
+
+2015-07-21  dale@health.usf.edu
+
+	* install_missing_R: add in Rcpp
+
+2015-07-09  dale@health.usf.edu
+
+	* cth_cluster.cpp: Many changes to support one tick bins.  Have to do two
+	passes through files because we can only know some stuff after completely
+	processing an entire period or file.
+
+2015-06-12  dale@health.usf.edu
+
+	* cth_cluster.cpp: Create fake curve entries if there is not an input 
+	from R curve fitting.
+
+2015-05-26  dale@health.usf.edu
+
+	* debian/control: added in xdotool as a dep
+	* demo_1exp20.cth: recreated this, it did not have curve data in it, which
+	makes cth_project.m very unhappy.
+
+2015-05-22  dale@health.usf.edu
+
+	* cthgui.cpp: 1.1.0 release.  Put in some text suggesting the curve fitting
+	is not quite ready yet.
+
+2015-05-19  dale@health.usf.edu
+
+	* debian/control: add in R dependencies
+
+2015-05-01  dale@health.usf.edu
+
+	* cth_cluster.h:  add in spike/amplitude calcs
+
+2015-04-29  dale@health.usf.edu
+
+	* cth_cluster.h: 
+	* cth_cluster.cpp: add in unit normalization, 
+
+2015-04-27  dale@health.usf.edu
+
+	* cth_cluster.cpp: fix bug, peak normalization returned mean, not peak
+	value (cut-n-paste error)
+
+2015-02-26  dale@health.usf.edu
+
+	* cth_cluster.cpp: major data output re-org.  Put all pt specfic info in a
+	struct with field names instead of too many matrices assumed to be
+	ordered the same.
+
+2015-02-13  dale@health.usf.edu
+
+	* cth_impl.cpp: pass gui window ID to our octave partner.  Allows multiple
+	runs in different workspaces.
+
+2015-01-26  dale@health.usf.edu
+
+	* debian/postinst.template: add in mssing _ to some filenames.
+
+2015-01-16  dale@health.usf.edu
+
+	* Makefile.am: mod to be able to do debug or optimized build.  It REALLY
+	runs faster when optimized.  You still have to edit this file to choose the
+	build type.
+
+2015-01-07  dale@health.usf.edu
+
+	* cth_cluster.cpp: Really implement saving periods to different files.
+
+2014-12-23  dale@health.usf.edu
+
+	* cthgui.cpp: remove several of the distance algorithm choices.  They do
+	not make sense for the CTH data, and one of them appears to be broken since
+	it calculates negative distances.
+
+2014-12-22  dale@health.usf.edu
+
+	* Makefile.am: Turn this into a real debian package so it can be
+	distributed to lab machines.
+
+2014-08-19  dale@health.usf.edu
+
+	* README: Some hints as to just what is going on with this package.
+
+2014-08-15  dale@health.usf.edu
+
+	* configure.ac: Start the ChangeLog, create this.  Going to 'debian-ize'
+	the cth package.
+	* cthgui.cpp: Move entire cthgui dir to cth dir, building recursive
+	packages just too hard.

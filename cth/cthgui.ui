@@ -1,0 +1,2310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CTHgui</class>
+ <widget class="QMainWindow" name="CTHgui">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1600</width>
+    <height>1000</height>
+   </rect>
+  </property>
+  <property name="focusPolicy">
+   <enum>Qt::ClickFocus</enum>
+  </property>
+  <property name="windowTitle">
+   <string>CTH Clustering App</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>cthicon.png</normaloff>
+    <normalon>cthicon.png</normalon>cthicon.png</iconset>
+  </property>
+  <property name="toolTip">
+   <string/>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <property name="styleSheet">
+    <string notr="true">QGroupBox {
+    border: 1px solid darkGray;
+    margin-top: 0.5em;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 10px;
+    padding: 0 3px 0 3px;
+}</string>
+   </property>
+   <layout class="QGridLayout" name="gridLayout" rowstretch="9,10">
+    <item row="1" column="0">
+     <layout class="QHBoxLayout" name="bottomHorzLayout" stretch="0,16,6">
+      <property name="spacing">
+       <number>10</number>
+      </property>
+      <property name="rightMargin">
+       <number>10</number>
+      </property>
+      <item>
+       <widget class="QFrame" name="buttonsFrame">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>403</width>
+          <height>0</height>
+         </size>
+        </property>
+        <widget class="QPushButton" name="scrollBack">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>270</x>
+           <y>7</y>
+           <width>124</width>
+           <height>36</height>
+          </rect>
+         </property>
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Scroll bar chart plots backwards.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="text">
+          <string>Scroll Back &gt;&gt;</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="guiConnect">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>172</x>
+           <y>455</y>
+           <width>129</width>
+           <height>36</height>
+          </rect>
+         </property>
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This is for debugging. You can start Octave or the GUI in a debugger with a fixed port number on the command line GUI command line, then use this to connect.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="text">
+          <string>Connect To Octave</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="saveClustersData">
+         <property name="geometry">
+          <rect>
+           <x>145</x>
+           <y>149</y>
+           <width>229</width>
+           <height>29</height>
+          </rect>
+         </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="maxLength">
+          <number>256</number>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="getCTHInfoText">
+         <property name="geometry">
+          <rect>
+           <x>146</x>
+           <y>103</y>
+           <width>229</width>
+           <height>29</height>
+          </rect>
+         </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="maxLength">
+          <number>256</number>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="selectStereoData">
+         <property name="geometry">
+          <rect>
+           <x>145</x>
+           <y>238</y>
+           <width>229</width>
+           <height>29</height>
+          </rect>
+         </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="maxLength">
+          <number>256</number>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="sendparamText">
+         <property name="geometry">
+          <rect>
+           <x>145</x>
+           <y>193</y>
+           <width>229</width>
+           <height>29</height>
+          </rect>
+         </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="maxLength">
+          <number>256</number>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="sendOctave">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>3</x>
+           <y>7</y>
+           <width>129</width>
+           <height>36</height>
+          </rect>
+         </property>
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Pick a .cth file from the top file box above, select parameters and then click on this button to send the information the Octave program to perform clustering operations.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="text">
+          <string>Create Plots</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="sendParam">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>3</x>
+           <y>187</y>
+           <width>129</width>
+           <height>36</height>
+          </rect>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;If Octaves needs additional parameters, it will prompt for them in the Messages and Prompts window.  Enter them in the edit control to the right and click on this button</string>
+         </property>
+         <property name="text">
+          <string>Send Param(s)</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="exportAtlas">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>3</x>
+           <y>277</y>
+           <width>129</width>
+           <height>36</height>
+          </rect>
+         </property>
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Export the CTH clusters to a file that the ATLAS program can use to plot points, indicating the clusters to a file named filename.csv.&lt;/p&gt;&lt;p&gt;If there are ctl and stem CTHs, they will be saved in filename[stimtype].csv where stimtype is cc02 or vc02.&lt;/p&gt;&lt;p&gt;If there are kmeans CTHs, they will be saved in filename_kmeans for the standard kmeans algorithm and filename_kmeans_centr when clustering has been performed using the dendrogram centroids/archetypes as the starting locations.&lt;/p&gt;&lt;p&gt;If there are fuzzy cmeans CTHs, they will be saved in filename_fuzzy.csv. &lt;/p&gt;&lt;p&gt;Export information that can be used to lookup CTHs in a database to a second file named filename.db.csv.&lt;/p&gt;&lt;p&gt;Enter the filename without an extension in the control to the right, then click on this button.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="text">
+          <string>Export To Atlas
+And Database</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="doQuit">
+         <property name="geometry">
+          <rect>
+           <x>3</x>
+           <y>457</y>
+           <width>129</width>
+           <height>36</height>
+          </rect>
+         </property>
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;I wonder what this does?</string>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: darkred;
+font-style:bold</string>
+         </property>
+         <property name="text">
+          <string>QUIT</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="exportAtlasText">
+         <property name="geometry">
+          <rect>
+           <x>145</x>
+           <y>283</y>
+           <width>229</width>
+           <height>29</height>
+          </rect>
+         </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="maxLength">
+          <number>256</number>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="sendCmdText">
+         <property name="geometry">
+          <rect>
+           <x>145</x>
+           <y>418</y>
+           <width>229</width>
+           <height>29</height>
+          </rect>
+         </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="maxLength">
+          <number>256</number>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="startOver">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>3</x>
+           <y>52</y>
+           <width>129</width>
+           <height>36</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>8</pointsize>
+          </font>
+         </property>
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;Click on this to close all figures and clear all variables.  Use this when the screen is getting very cluttered.</string>
+         </property>
+         <property name="text">
+          <string>Start Over</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="saveClusters">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>3</x>
+           <y>143</y>
+           <width>130</width>
+           <height>36</height>
+          </rect>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This control lets you select a subset of Dendrogram, K-Means, K-Means Using Dendrogram clusters, and Fuzzy C-Means clusters. Use a selector prefix to select the cluster type(s) you want to save.&lt;/p&gt;&lt;p&gt;For Dendrogram: d&lt;/p&gt;&lt;p&gt;For K-Means: k&lt;/p&gt;&lt;p&gt;For K-means with preselected clusters: kc&lt;/p&gt;&lt;p&gt;For Fuzzy C-means: f&lt;/p&gt;&lt;p&gt;The last item must be the file name and it must have at least one non-numeric character.&lt;/p&gt;&lt;p&gt;For example:&lt;/p&gt;&lt;p&gt;d 1 2 k 2 3 4 kc 1 4 5 12 f 9 12 13 filename&lt;/p&gt;&lt;p&gt;Order and case is not important. You can have more then one set of selectors. You do not have to include all of the selectors. If you have not selected a non-dendrogram cluster type, nothing is saved. If no prefix is selected, the dendrogram selector is used by default. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="text">
+          <string>Save Cluster(s)
+To File</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="selectStereo">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>3</x>
+           <y>232</y>
+           <width>129</width>
+           <height>36</height>
+          </rect>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;To display a subset of the stereotaxic clusters in the current plot window, enter cluster number(s) separated by spaces in the edit control to the right, then click on this button. Enter 0 to display all clusters.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="text">
+          <string>Show Stereotaxic
+Clusters</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="getCTHInfo">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>3</x>
+           <y>97</y>
+           <width>129</width>
+           <height>36</height>
+          </rect>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This creates a window and displays information about one CTH. This includes experiment information and various plots, including a projection plot that shows the CTH in relation to the other projected CTHs. This also highlights the point in the N SPACE CTH PROJECTION window. The highlights in this window persist until you clear them.&lt;/p&gt;&lt;p&gt;Multiple CTHs can be specified and each will gets its own window. Enter one or more CTH numbers, separated by spaces, in the control to the right, then click on this button.&lt;/p&gt;&lt;p&gt;For files with CTL/STIM periods in them, entering the number of a CTH and a *, separated by spaces, will display all of the sibling CTHs.  This works for multiple numbers, e.g.:  7 19 * 23 102. The location of the * character is not important.&lt;/p&gt;&lt;p&gt;Enter 0 for the CTH number to clear the highlighted points from the N SPACE CTH PROJECTION window. This over-rides any other numbers. They will be ignored.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="text">
+          <string>CTH Info</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="scrollFwd">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>138</x>
+           <y>7</y>
+           <width>124</width>
+           <height>36</height>
+          </rect>
+         </property>
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Scroll bar char plots forward.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="text">
+          <string>&lt;&lt; Scroll Foward</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="sendCmd">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>3</x>
+           <y>412</y>
+           <width>129</width>
+           <height>36</height>
+          </rect>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;Send commands to the Octave interpreter.  (Note:  This is mostly for debugging.  Not all commands are supported. It is not very difficult to crash the program using this.)</string>
+         </property>
+         <property name="text">
+          <string>Send Command</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="exportCentroids">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>3</x>
+           <y>367</y>
+           <width>129</width>
+           <height>36</height>
+          </rect>
+         </property>
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Export cluster archetypes to file(s). An archetypes is the mean, or centroid, CTH for all of the CTHs in a cluster. Archetypes for all active clustering algorithms will be exported to file(s).&lt;/p&gt;&lt;p&gt;Dendrogram archetypes will be exported to filename_dend.cth.&lt;/p&gt;&lt;p&gt;K-Means archetypes will be exported to filename_km.cth.&lt;/p&gt;&lt;p&gt;Fuzzy C-Means archetypes will be exported to filename_fcm.cth.&lt;/p&gt;&lt;p&gt;The intention is to use these as categories of cluster types and to use these with an unknown cluster to assign the unknown CTH to one of the types.&lt;/p&gt;&lt;p&gt;Enter the filename without an extension in the control to the right, then click on this button.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="text">
+          <string>Export Cluster
+Archetypes</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="exportCentroidsText">
+         <property name="geometry">
+          <rect>
+           <x>145</x>
+           <y>373</y>
+           <width>229</width>
+           <height>29</height>
+          </rect>
+         </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="maxLength">
+          <number>256</number>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="closeInfo">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>138</x>
+           <y>52</y>
+           <width>124</width>
+           <height>36</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>8</pointsize>
+          </font>
+         </property>
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Click on this to close all CTH Info windows. Use this when the screen is getting very cluttered.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="text">
+          <string>Close CTH Info</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="exportPairs">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>3</x>
+           <y>321</y>
+           <width>129</width>
+           <height>36</height>
+          </rect>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If the current .cth file has control and stim periods in it, click on this to find the Control and Stim CTHs that changed clusters.&lt;/p&gt;&lt;p&gt;The results will be saved to a .cth file that this program and read and a .csv file that the brainstem program can read.&lt;/p&gt;&lt;p&gt;If the current file does not have control and stim periods, the button click is ignored.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="text">
+          <string>Export Ctl/Sim
+Pairs</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="exportPairsText">
+         <property name="geometry">
+          <rect>
+           <x>145</x>
+           <y>328</y>
+           <width>229</width>
+           <height>29</height>
+          </rect>
+         </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="maxLength">
+          <number>256</number>
+         </property>
+        </widget>
+       </widget>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0">
+        <item>
+         <widget class="QLabel" name="infoLabel">
+          <property name="text">
+           <string>Messages and Prompts</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QFrame" name="frame_2">
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTextEdit" name="guiInfo">
+          <property name="font">
+           <font>
+            <family>Sans Serif</family>
+            <pointsize>12</pointsize>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="acceptDrops">
+           <bool>false</bool>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Sunken</enum>
+          </property>
+          <property name="undoRedoEnabled">
+           <bool>false</bool>
+          </property>
+          <property name="acceptRichText">
+           <bool>false</bool>
+          </property>
+          <property name="textInteractionFlags">
+           <set>Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QFrame" name="rareFrame">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::NoFrame</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <widget class="QGroupBox" name="rareOptionsBox">
+         <property name="geometry">
+          <rect>
+           <x>23</x>
+           <y>22</y>
+           <width>261</width>
+           <height>471</height>
+          </rect>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>261</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="title">
+          <string>Rarely Used Options</string>
+         </property>
+         <widget class="QWidget" name="layoutWidget12">
+          <property name="geometry">
+           <rect>
+            <x>13</x>
+            <y>25</y>
+            <width>247</width>
+            <height>441</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="rareLayout">
+           <item>
+            <widget class="QCheckBox" name="modDepth1">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Display the Modulation Depth Algorithm 1 plots.  This divides the cth into a high and low rate region and calculates modulation depth, given by (hi_rate-lo_rate) / (hi_rate+low_rate).  It was discovered that the high rate region was often 1 bin wide, which did not seem quite right.  This lead to the creation of Modulation Depth Algorithm 2.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="text">
+              <string>Modulation Depth Algorithm 1</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="modDepth2">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Display the Modulation Depth Algorithm 2 plots. This iteratively combines adjacent bins to create one high and one low rate region and calculates modulation depth, given by (hi_rate-lo_rate) / (hi_rate+low_rate). This avoids the feature of Mod Depth Algo 1 that resulted in a lot of the high rate region often being just 1 bin wide.  It also shows the peak cth in the high rate region, not the start bin. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="text">
+              <string>Modulation Depth Algorithm 2</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="stereoPerExp">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;The default stereotaxic plot uses all points from all experiments.  This will create a plot for each experiment.  This wil be on the workspace to the right, so you will have to switch to that workspace to view the plots.</string>
+             </property>
+             <property name="text">
+              <string>Create a Stereotaxic Plot
+For Each Experiment</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="varBarY">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Each set of CTH subplots is scaled to the same scale, based on the maximum Y axis value in the cluster. Select this to have each subplot automatically scale the Y axis values to maximize the Y value for each plot.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="text">
+              <string>Autoscale Y Axis For
+CTH Bar Charts</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="errPlotScale">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;By default, each Error Bar subplot is individually scaled.  Select this to use the same scale for every CTH Error Bar plot.  Ths can result in some very tiny error bars if one of the subplots has a large scaled standard error.</string>
+             </property>
+             <property name="text">
+              <string>Error Bar Use Fixed Scale</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="isoVarBarY">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Each set of Isomap CTH subplots is scaled to the same scale, based on the maximum range of Y axis values. Select this to have each subplot automatically scale the Y axis values to maximize the Y value for each plot.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="text">
+              <string>Autoscale Isomap Y Axis For
+CTH Bar Charts</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="screenCap">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This is used to change the location and size of the N-space CTH projection plot and dendrogram windows on the left monitor (if you have more than 1 monitor) for screen captures.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="text">
+              <string>Larger Windows For Screen Caps</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="plot2D">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Project higher dimensional plots onto a 2D space. The default is to project onto a 3D space.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="text">
+              <string>2D Projection Plots (3D is default)</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="colorOn">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Show plotting colors using a color blind friendly set of colors. There are 15 colors in the palette. They get reused for more than this many clusters, so larger numbers of clusters will use the same color for different clusters.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="text">
+              <string>Use Color-blind Friendly Colors</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="copheneticCalc">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;See https://en.wikipedia.org/wiki/Cophenetic_correlation for a discussion of what this means. This can take a VERY long time for large data sets.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="text">
+              <string>Calculate Cophenetic
+ Coefficient</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="inconsistencyCalc">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;See http://www.mathworks.com/help/stats/hierarchical-clustering.htm for a discussion of what this means.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="text">
+              <string>Calculate Inconsistency
+ Coefficient</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QFrame" name="frame">
+             <property name="frameShape">
+              <enum>QFrame::NoFrame</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Plain</enum>
+             </property>
+             <widget class="QLabel" name="inconsistentLabel">
+              <property name="geometry">
+               <rect>
+                <x>22</x>
+                <y>1</y>
+                <width>91</width>
+                <height>29</height>
+               </rect>
+              </property>
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This is how many levels to look below the current one when doing comparisons. </string>
+              </property>
+              <property name="text">
+               <string>Inconsistentcy
+Depth:</string>
+              </property>
+             </widget>
+             <widget class="QLineEdit" name="inconsistentDepth">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
+              <property name="geometry">
+               <rect>
+                <x>135</x>
+                <y>4</y>
+                <width>41</width>
+                <height>23</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>2</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="0">
+     <layout class="QHBoxLayout" name="topHorzLayout" stretch="12,0,10,10,8,8,10">
+      <property name="spacing">
+       <number>6</number>
+      </property>
+      <property name="sizeConstraint">
+       <enum>QLayout::SetDefaultConstraint</enum>
+      </property>
+      <item>
+       <layout class="QVBoxLayout" name="fileLayout" stretch="0,0,20,0,0,20">
+        <property name="sizeConstraint">
+         <enum>QLayout::SetDefaultConstraint</enum>
+        </property>
+        <item>
+         <widget class="QLabel" name="fnameLabel">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use the file browser below to pick files that contain CTHs representing neurons in N-space. These are clustered according to selections made in other controls.&lt;/p&gt;&lt;p&gt;Files ending in .cth are generated by the cth_cluster program.&lt;/p&gt;&lt;p&gt;Files ending in .arch are files which contain cluster archetypes. These can be loaded as regular CTH files as well, which is useful for viewing the contents of the .arch files.&lt;/p&gt;&lt;p&gt;Use the Create Plots button to create clusters using these files.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="text">
+           <string>Files Of Points, Pick One</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="filePath">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
+          <property name="frame">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTreeView" name="fsysTree">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>1</horstretch>
+            <verstretch>1</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="toolTip">
+           <string/>
+          </property>
+          <property name="autoScroll">
+           <bool>true</bool>
+          </property>
+          <property name="rootIsDecorated">
+           <bool>false</bool>
+          </property>
+          <property name="itemsExpandable">
+           <bool>false</bool>
+          </property>
+          <attribute name="headerVisible">
+           <bool>false</bool>
+          </attribute>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="archLabel">
+          <property name="text">
+           <string>Archetype Files (Drag to right)</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="centroidPath">
+          <property name="dragEnabled">
+           <bool>true</bool>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTreeView" name="centroidTree">
+          <property name="toolTip">
+           <string/>
+          </property>
+          <property name="dragEnabled">
+           <bool>true</bool>
+          </property>
+          <property name="dragDropMode">
+           <enum>QAbstractItemView::DragOnly</enum>
+          </property>
+          <property name="rootIsDecorated">
+           <bool>false</bool>
+          </property>
+          <property name="itemsExpandable">
+           <bool>false</bool>
+          </property>
+          <property name="headerHidden">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>13</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QFrame" name="pdistFrame">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::NoFrame</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <widget class="QGroupBox" name="pdistBox">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>0</y>
+           <width>210</width>
+           <height>261</height>
+          </rect>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>261</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="title">
+          <string>Distance Algorithm</string>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+         <widget class="QWidget" name="verticalLayoutWidget9">
+          <property name="geometry">
+           <rect>
+            <x>33</x>
+            <y>20</y>
+            <width>151</width>
+            <height>234</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="pdistLayout">
+           <item>
+            <widget class="QRadioButton" name="pdistFromFile">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use custom distance metric in the .cth file. This is a modified Euclidean distance. We caculate the mean firing rate (MR) for each CTH. We also calcuate the scaled standard error (SSE) for each CTH. The distance in N space between each n-dimensional coordinate is the difference between the MR values divided by the square root of the sum of the squares of the SSE for each bin. Large variances in the firing rates of some bins have the tendency to move CTHs that might be considered &amp;quot;the same&amp;quot; to be moved away from each other. The idea is to reduce the influence of these large variances. This is the code that does this. &lt;/p&gt;&lt;p&gt;size is the number of CTHs.&lt;/p&gt;&lt;p&gt;summary is a matrix of the mean rate and scaled standard error for each bin for each CTH.&lt;/p&gt;&lt;p&gt;dist is the distance matrix which has been initialized to zero.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'monospace';&quot;&gt;for (row0 = 0; row0 &amp;lt; size-1; ++row0)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;{&lt;/p&gt;&lt;p&gt;for (row1 = row0+1; row1 &amp;lt; size; ++row1)&lt;/p&gt;&lt;p&gt;{&lt;/p&gt;&lt;p&gt;sumsqr = 0;&lt;/p&gt;&lt;p&gt;for (idx=0; idx &amp;lt; total_bins; idx++)&lt;/p&gt;&lt;p&gt;{&lt;/p&gt;&lt;p&gt;mean_rate0 = summary[row0][idx].mean_rate;&lt;/p&gt;&lt;p&gt;sserr0 = summary[row0][idx].sserr;&lt;/p&gt;&lt;p&gt;mean_rate1 = summary[row1][idx].mean_rate;&lt;/p&gt;&lt;p&gt;sserr1 = summary[row1][idx].sserr;&lt;/p&gt;&lt;p&gt;i f (sserr0 == 0 &amp;amp;&amp;amp; sserr1 == 0)&lt;/p&gt;&lt;p&gt;continue;&lt;/p&gt;&lt;p&gt;// our distance metric&lt;/p&gt;&lt;p&gt;subd = (mean_rate0 - mean_rate1) / sqrt(sserr0*sserr0 + sserr1*sserr1);&lt;/p&gt;&lt;p&gt;// this is what we would do for simple euclidean distance:&lt;/p&gt;&lt;p&gt;// subd = (mean_rate0 - mean_rate1);&lt;/p&gt;&lt;p&gt;sumsqr += subd*subd;&lt;/p&gt;&lt;p&gt;}&lt;/p&gt;&lt;p&gt;d = sqrt(sumsqr);&lt;/p&gt;&lt;p&gt;dist(row0,row1) = d; // add to symmetric matrix&lt;/p&gt;&lt;p&gt;dist(row1,row0) = d;&lt;/p&gt;&lt;p&gt;}&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="text">
+              <string>Custom From File</string>
+             </property>
+             <property name="checked">
+              <bool>false</bool>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">pdistButtonGroup</string>
+             </attribute>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="pdistEuclidean">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;Euclidian distance formula.</string>
+             </property>
+             <property name="text">
+              <string>Euclidean</string>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">pdistButtonGroup</string>
+             </attribute>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="pdistSeuclidean">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt; Standardized Euclidean distance.  Each coordinate in the sum of squares is inverse weighted by the sample variance of that coordinate.</string>
+             </property>
+             <property name="text">
+              <string>Seuclidean</string>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">pdistButtonGroup</string>
+             </attribute>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="pdistCityblock">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;The cityblock distance between two vectors in an n-dimensional real vector space with fixed Cartesian coordinate system is the sum of the lengths of the projections of the line segment between the points onto the coordinate axes.  Also know as the taxicab or Manhattan distance.</string>
+             </property>
+             <property name="text">
+              <string>Cityblock</string>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">pdistButtonGroup</string>
+             </attribute>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="pdistCosine">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt; One minus the cosine of the included angle between rows, seen as vectors.</string>
+             </property>
+             <property name="text">
+              <string>Cosine</string>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">pdistButtonGroup</string>
+             </attribute>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="pdistCorrelation">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;One minus the sample correlation between points (treated as sequences of values)</string>
+             </property>
+             <property name="text">
+              <string>Correlation</string>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">pdistButtonGroup</string>
+             </attribute>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="pdistSpearman">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;One minus the sample Spearman's rank correlation between observations, treated as sequences of values.  The sequences are ranked separately and the differences in rank are calculated at each position</string>
+             </property>
+             <property name="text">
+              <string>Spearman</string>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">pdistButtonGroup</string>
+             </attribute>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="pdistChebychev">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt; Chebyshev distance is a metric defined on a vector space where the distance between two vectors is the greatest of their differences along any coordinate dimension.</string>
+             </property>
+             <property name="text">
+              <string>Chebychev</string>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">pdistButtonGroup</string>
+             </attribute>
+            </widget>
+           </item>
+           <item>
+            <spacer name="verticalSpacer">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+        <widget class="cthGuiDropEdit" name="swallowName">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>343</y>
+           <width>271</width>
+           <height>25</height>
+          </rect>
+         </property>
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Drag a swallow archetype file name from the Archetype list.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="dragEnabled">
+          <bool>false</bool>
+         </property>
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+         <property name="clearButtonEnabled">
+          <bool>true</bool>
+         </property>
+        </widget>
+        <widget class="QLabel" name="centroidLabel">
+         <property name="geometry">
+          <rect>
+           <x>2</x>
+           <y>266</y>
+           <width>211</width>
+           <height>17</height>
+          </rect>
+         </property>
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use this to pick .arch files. These contain CTHs that serve as archetypes that are are used as cluster centers for clustering the points in .cth files.&lt;/p&gt;&lt;p&gt;Use the Cluster Using Archetypes button to cluster using the CTH types.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+</string>
+         </property>
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Clustering Archetype File&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="swallowArchLabel">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>324</y>
+           <width>221</width>
+           <height>17</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Swallow Archetype File&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
+        <widget class="cthGuiDropEdit" name="lareflexName">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>401</y>
+           <width>271</width>
+           <height>25</height>
+          </rect>
+         </property>
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Drag a lareflex archetype file name from the Archetype list.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="dragEnabled">
+          <bool>false</bool>
+         </property>
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+         <property name="clearButtonEnabled">
+          <bool>true</bool>
+         </property>
+        </widget>
+        <widget class="QLabel" name="lareflexArchLabel">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>381</y>
+           <width>221</width>
+           <height>17</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Lareflex Archetype File&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
+        <widget class="cthGuiDropEdit" name="archetypeName">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>290</y>
+           <width>271</width>
+           <height>25</height>
+          </rect>
+         </property>
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Drag an archetype file name from the archetype file list.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="dragEnabled">
+          <bool>false</bool>
+         </property>
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+         <property name="clearButtonEnabled">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </widget>
+      </item>
+      <item>
+       <widget class="QFrame" name="linkageFrame">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::NoFrame</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <widget class="QGroupBox" name="linkageBox">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>0</y>
+           <width>210</width>
+           <height>261</height>
+          </rect>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;See:&lt;/p&gt;&lt;p&gt;https://v8doc.sas.com/sashtml/stat/chap23/sect12.htm&lt;/p&gt;&lt;p&gt;for more detailed descriptions of the linkage algorithms.&lt;/p&gt;&lt;p&gt;The descriptions in the invididual help come from:&lt;/p&gt;&lt;p&gt;http://docs.scipy.org/doc/scipy-0.16.0/reference/generated/scipy.cluster.hierarchy.linkage.htm&lt;span style=&quot; color:#0000ff;&quot;&gt;l&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="title">
+          <string>Linkage Algorithm</string>
+         </property>
+         <widget class="QWidget" name="verticalLayoutWidget_2">
+          <property name="geometry">
+           <rect>
+            <x>24</x>
+            <y>20</y>
+            <width>121</width>
+            <height>242</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="linkageLayout" stretch="2,2,2,2,2,2,2,0,0">
+           <property name="spacing">
+            <number>7</number>
+           </property>
+           <property name="sizeConstraint">
+            <enum>QLayout::SetMaximumSize</enum>
+           </property>
+           <item>
+            <widget class="QRadioButton" name="linkageSingle">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;single assigns&lt;/p&gt;&lt;p&gt;&lt;a name=&quot;MathJax-Element-31-Frame&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;d&lt;/span&gt;&lt;a name=&quot;MathJax-Span-166&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;(&lt;/span&gt;&lt;a name=&quot;MathJax-Span-167&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;u&lt;/span&gt;&lt;a name=&quot;MathJax-Span-168&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;,&lt;/span&gt;&lt;a name=&quot;MathJax-Span-169&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;v&lt;/span&gt;&lt;a name=&quot;MathJax-Span-170&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;)&lt;/span&gt;&lt;a name=&quot;MathJax-Span-171&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;=&lt;/span&gt;&lt;a name=&quot;MathJax-Span-172&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;m&lt;/span&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;in&lt;/span&gt;&lt;a name=&quot;MathJax-Span-173&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;(&lt;/span&gt;&lt;a name=&quot;MathJax-Span-174&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;d&lt;/span&gt;&lt;a name=&quot;MathJax-Span-175&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;i&lt;/span&gt;&lt;a name=&quot;MathJax-Span-176&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;s&lt;/span&gt;&lt;a name=&quot;MathJax-Span-177&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;t&lt;/span&gt;&lt;a name=&quot;MathJax-Span-178&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;(&lt;/span&gt;&lt;a name=&quot;MathJax-Span-179&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;u&lt;/span&gt;&lt;a name=&quot;MathJax-Span-180&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;[&lt;/span&gt;&lt;a name=&quot;MathJax-Span-181&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;i&lt;/span&gt;&lt;a name=&quot;MathJax-Span-182&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;]&lt;/span&gt;&lt;a name=&quot;MathJax-Span-183&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;,&lt;/span&gt;&lt;a name=&quot;MathJax-Span-184&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;v&lt;/span&gt;&lt;a name=&quot;MathJax-Span-185&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;[&lt;/span&gt;&lt;a name=&quot;MathJax-Span-186&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;j&lt;/span&gt;&lt;a name=&quot;MathJax-Span-187&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;]&lt;/span&gt;&lt;a name=&quot;MathJax-Span-188&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;)&lt;/span&gt;&lt;a name=&quot;MathJax-Span-189&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;for all points &lt;a name=&quot;MathJax-Element-32-Frame&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;i&lt;/span&gt; in cluster &lt;a name=&quot;MathJax-Element-33-Frame&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;u&lt;/span&gt; and &lt;a name=&quot;MathJax-Element-34-Frame&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;j&lt;/span&gt; in cluster &lt;a name=&quot;MathJax-Element-35-Frame&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;v&lt;/span&gt;. This is also known as the Nearest Point Algorithm.&lt;/p&gt;&lt;p&gt;Single can result in clusters that are composed of a chain points that are locally near to each other, but points at the end of the cluster can be a large distance from each other.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="statusTip">
+              <string/>
+             </property>
+             <property name="text">
+              <string>Single</string>
+             </property>
+             <property name="checked">
+              <bool>false</bool>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">linkageButtonGroup</string>
+             </attribute>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="linkageComplete">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;complete assigns&lt;/p&gt;&lt;p&gt;&lt;a name=&quot;MathJax-Element-36-Frame&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;d&lt;/span&gt;&lt;a name=&quot;MathJax-Span-205&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;(&lt;/span&gt;&lt;a name=&quot;MathJax-Span-206&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;u&lt;/span&gt;&lt;a name=&quot;MathJax-Span-207&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;,&lt;/span&gt;&lt;a name=&quot;MathJax-Span-208&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;v&lt;/span&gt;&lt;a name=&quot;MathJax-Span-209&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;)&lt;/span&gt;&lt;a name=&quot;MathJax-Span-210&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;=&lt;/span&gt;&lt;a name=&quot;MathJax-Span-211&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;m&lt;/span&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;ax&lt;/span&gt;&lt;a name=&quot;MathJax-Span-212&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;(&lt;/span&gt;&lt;a name=&quot;MathJax-Span-213&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;d&lt;/span&gt;&lt;a name=&quot;MathJax-Span-214&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;i&lt;/span&gt;&lt;a name=&quot;MathJax-Span-215&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;s&lt;/span&gt;&lt;a name=&quot;MathJax-Span-216&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;t&lt;/span&gt;&lt;a name=&quot;MathJax-Span-217&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;(&lt;/span&gt;&lt;a name=&quot;MathJax-Span-218&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;u&lt;/span&gt;&lt;a name=&quot;MathJax-Span-219&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;[&lt;/span&gt;&lt;a name=&quot;MathJax-Span-220&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;i&lt;/span&gt;&lt;a name=&quot;MathJax-Span-221&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;]&lt;/span&gt;&lt;a name=&quot;MathJax-Span-222&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;,&lt;/span&gt;&lt;a name=&quot;MathJax-Span-223&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;v&lt;/span&gt;&lt;a name=&quot;MathJax-Span-224&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;[&lt;/span&gt;&lt;a name=&quot;MathJax-Span-225&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;j&lt;/span&gt;&lt;a name=&quot;MathJax-Span-226&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;]&lt;/span&gt;&lt;a name=&quot;MathJax-Span-227&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;)&lt;/span&gt;&lt;a name=&quot;MathJax-Span-228&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;for all points &lt;a name=&quot;MathJax-Element-37-Frame&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;i&lt;/span&gt; in cluster u and &lt;a name=&quot;MathJax-Element-38-Frame&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;j&lt;/span&gt; in cluster &lt;a name=&quot;MathJax-Element-39-Frame&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;v&lt;/span&gt;. This is also known by the Farthest Neighbor Algorithm or Voor Hees Algorithm.&lt;/p&gt;&lt;p&gt;Complete linkage tends to find compact clusters of approximately equal diameters. Outliers can have a significant impact on cluster membership.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="text">
+              <string>&amp;Complete</string>
+             </property>
+             <property name="checked">
+              <bool>false</bool>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">linkageButtonGroup</string>
+             </attribute>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="linkageAverage">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;average assigns&lt;/p&gt;&lt;p&gt;&lt;a name=&quot;MathJax-Element-40-Frame&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;d&lt;/span&gt;&lt;a name=&quot;MathJax-Span-241&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;(&lt;/span&gt;&lt;a name=&quot;MathJax-Span-242&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;u&lt;/span&gt;&lt;a name=&quot;MathJax-Span-243&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;,&lt;/span&gt;&lt;a name=&quot;MathJax-Span-244&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;v&lt;/span&gt;&lt;a name=&quot;MathJax-Span-245&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;)&lt;/span&gt;&lt;a name=&quot;MathJax-Span-246&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;=&lt;/span&gt;&lt;a name=&quot;MathJax-Span-247&quot;/&gt;&lt;span style=&quot; font-family:'STIXSizeOneSym';&quot;&gt;∑&lt;/span&gt;&lt;a name=&quot;MathJax-Span-249&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;i&lt;/span&gt;&lt;a name=&quot;MathJax-Span-252&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;j&lt;/span&gt;&lt;a name=&quot;MathJax-Span-253&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;d&lt;/span&gt;&lt;a name=&quot;MathJax-Span-256&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;(&lt;/span&gt;&lt;a name=&quot;MathJax-Span-257&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;u&lt;/span&gt;&lt;a name=&quot;MathJax-Span-258&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;[&lt;/span&gt;&lt;a name=&quot;MathJax-Span-259&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;i&lt;/span&gt;&lt;a name=&quot;MathJax-Span-260&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;]&lt;/span&gt;&lt;a name=&quot;MathJax-Span-261&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;,&lt;/span&gt;&lt;a name=&quot;MathJax-Span-262&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;v&lt;/span&gt;&lt;a name=&quot;MathJax-Span-263&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;[&lt;/span&gt;&lt;a name=&quot;MathJax-Span-264&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;j&lt;/span&gt;&lt;a name=&quot;MathJax-Span-265&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;]&lt;/span&gt;&lt;a name=&quot;MathJax-Span-266&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;)&lt;/span&gt;&lt;a name=&quot;MathJax-Span-267&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;(&lt;/span&gt;&lt;a name=&quot;MathJax-Span-269&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;|&lt;/span&gt;&lt;a name=&quot;MathJax-Span-272&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;u&lt;/span&gt;&lt;a name=&quot;MathJax-Span-273&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;|&lt;/span&gt;&lt;a name=&quot;MathJax-Span-276&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;∗&lt;/span&gt;&lt;a name=&quot;MathJax-Span-277&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;|&lt;/span&gt;&lt;a name=&quot;MathJax-Span-280&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;v&lt;/span&gt;&lt;a name=&quot;MathJax-Span-281&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;|&lt;/span&gt;&lt;a name=&quot;MathJax-Span-284&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;for all points &lt;a name=&quot;MathJax-Element-41-Frame&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;i&lt;/span&gt; and &lt;a name=&quot;MathJax-Element-42-Frame&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;j&lt;/span&gt; where &lt;a name=&quot;MathJax-Element-43-Frame&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;|&lt;/span&gt;&lt;a name=&quot;MathJax-Span-296&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;u&lt;/span&gt;&lt;a name=&quot;MathJax-Span-297&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;|&lt;/span&gt; and &lt;a name=&quot;MathJax-Element-44-Frame&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;|&lt;/span&gt;&lt;a name=&quot;MathJax-Span-305&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;v&lt;/span&gt;&lt;a name=&quot;MathJax-Span-306&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;|&lt;/span&gt; are the cardinalities of clusters &lt;a name=&quot;MathJax-Element-45-Frame&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;u&lt;/span&gt; and &lt;a name=&quot;MathJax-Element-46-Frame&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;v&lt;/span&gt;, respectively. This is also called the Unweighted Pair Group Method with Arithmetic Mean (UPGMA) algorithm.&lt;/p&gt;&lt;p&gt;Average tends to join clusters with small variances.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="text">
+              <string>A&amp;verage</string>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">linkageButtonGroup</string>
+             </attribute>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="linkageWeighted">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;weighted assigns&lt;/p&gt;&lt;p&gt;&lt;a name=&quot;MathJax-Element-47-Frame&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;d&lt;/span&gt;&lt;a name=&quot;MathJax-Span-318&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;(&lt;/span&gt;&lt;a name=&quot;MathJax-Span-319&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;u&lt;/span&gt;&lt;a name=&quot;MathJax-Span-320&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;,&lt;/span&gt;&lt;a name=&quot;MathJax-Span-321&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;v&lt;/span&gt;&lt;a name=&quot;MathJax-Span-322&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;)&lt;/span&gt;&lt;a name=&quot;MathJax-Span-323&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;=&lt;/span&gt;&lt;a name=&quot;MathJax-Span-324&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;(&lt;/span&gt;&lt;a name=&quot;MathJax-Span-325&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;d&lt;/span&gt;&lt;a name=&quot;MathJax-Span-326&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;i&lt;/span&gt;&lt;a name=&quot;MathJax-Span-327&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;s&lt;/span&gt;&lt;a name=&quot;MathJax-Span-328&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;t&lt;/span&gt;&lt;a name=&quot;MathJax-Span-329&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;(&lt;/span&gt;&lt;a name=&quot;MathJax-Span-330&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;s&lt;/span&gt;&lt;a name=&quot;MathJax-Span-331&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;,&lt;/span&gt;&lt;a name=&quot;MathJax-Span-332&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;v&lt;/span&gt;&lt;a name=&quot;MathJax-Span-333&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;)&lt;/span&gt;&lt;a name=&quot;MathJax-Span-334&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;+&lt;/span&gt;&lt;a name=&quot;MathJax-Span-335&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;d&lt;/span&gt;&lt;a name=&quot;MathJax-Span-336&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;i&lt;/span&gt;&lt;a name=&quot;MathJax-Span-337&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;s&lt;/span&gt;&lt;a name=&quot;MathJax-Span-338&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;t&lt;/span&gt;&lt;a name=&quot;MathJax-Span-339&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;(&lt;/span&gt;&lt;a name=&quot;MathJax-Span-340&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;t&lt;/span&gt;&lt;a name=&quot;MathJax-Span-341&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;,&lt;/span&gt;&lt;a name=&quot;MathJax-Span-342&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;v&lt;/span&gt;&lt;a name=&quot;MathJax-Span-343&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;)&lt;/span&gt;&lt;a name=&quot;MathJax-Span-344&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;)&lt;/span&gt;&lt;a name=&quot;MathJax-Span-345&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;/&lt;/span&gt;&lt;a name=&quot;MathJax-Span-348&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;2&lt;/span&gt;&lt;/p&gt;&lt;p&gt;where cluster u was formed with cluster s and t and v is a remaining cluster in the forest. This is also called the Weighted Pair Group Method with Averaging (WPGMA) algorithm.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="text">
+              <string>Weighted</string>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">linkageButtonGroup</string>
+             </attribute>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="linkageCentroid">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;centroid assigns&lt;/p&gt;&lt;p&gt;&lt;a name=&quot;MathJax-Element-48-Frame&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;d&lt;/span&gt;&lt;a name=&quot;MathJax-Span-352&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;i&lt;/span&gt;&lt;a name=&quot;MathJax-Span-353&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;s&lt;/span&gt;&lt;a name=&quot;MathJax-Span-354&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;t&lt;/span&gt;&lt;a name=&quot;MathJax-Span-355&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;(&lt;/span&gt;&lt;a name=&quot;MathJax-Span-356&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;s&lt;/span&gt;&lt;a name=&quot;MathJax-Span-357&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;,&lt;/span&gt;&lt;a name=&quot;MathJax-Span-358&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;t&lt;/span&gt;&lt;a name=&quot;MathJax-Span-359&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;)&lt;/span&gt;&lt;a name=&quot;MathJax-Span-360&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;=&lt;/span&gt;&lt;a name=&quot;MathJax-Span-361&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;|&lt;/span&gt;&lt;a name=&quot;MathJax-Span-364&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;|&lt;/span&gt;&lt;a name=&quot;MathJax-Span-367&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;c&lt;/span&gt;&lt;a name=&quot;MathJax-Span-369&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;s&lt;/span&gt;&lt;a name=&quot;MathJax-Span-370&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;−&lt;/span&gt;&lt;a name=&quot;MathJax-Span-371&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;c&lt;/span&gt;&lt;a name=&quot;MathJax-Span-373&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;t&lt;/span&gt;&lt;a name=&quot;MathJax-Span-374&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;|&lt;/span&gt;&lt;a name=&quot;MathJax-Span-377&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;|&lt;/span&gt;&lt;a name=&quot;MathJax-Span-381&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;2&lt;/span&gt;&lt;/p&gt;&lt;p&gt;where &lt;a name=&quot;MathJax-Element-49-Frame&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;c&lt;/span&gt;&lt;a name=&quot;MathJax-Span-386&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;s&lt;/span&gt; and &lt;a name=&quot;MathJax-Element-50-Frame&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;c&lt;/span&gt;&lt;a name=&quot;MathJax-Span-391&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;t&lt;/span&gt; are the centroids of clusters &lt;a name=&quot;MathJax-Element-51-Frame&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;s&lt;/span&gt; and &lt;a name=&quot;MathJax-Element-52-Frame&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;t&lt;/span&gt;, respectively. When two clusters &lt;a name=&quot;MathJax-Element-53-Frame&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;s&lt;/span&gt; and &lt;a name=&quot;MathJax-Element-54-Frame&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;t&lt;/span&gt; are combined into a new cluster &lt;a name=&quot;MathJax-Element-55-Frame&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;u&lt;/span&gt;, the new centroid is computed over all the original objects in clusters &lt;a name=&quot;MathJax-Element-56-Frame&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;s&lt;/span&gt; and &lt;a name=&quot;MathJax-Element-57-Frame&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;t&lt;/span&gt;. The distance then becomes the Euclidean distance between the centroid of &lt;a name=&quot;MathJax-Element-58-Frame&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;u&lt;/span&gt; and the centroid of a remaining cluster &lt;a name=&quot;MathJax-Element-59-Frame&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;v&lt;/span&gt; in the forest. This is also known as the Unweighted Pair-Groups Method Centroid (UPGMC) algorithm.&lt;/p&gt;&lt;p&gt;This only valid for Euclidean distances.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="text">
+              <string>Centroid</string>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">linkageButtonGroup</string>
+             </attribute>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="linkageMedian">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;median assigns &lt;a name=&quot;MathJax-Element-60-Frame&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;d&lt;/span&gt;&lt;a name=&quot;MathJax-Span-422&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;(&lt;/span&gt;&lt;a name=&quot;MathJax-Span-423&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;s&lt;/span&gt;&lt;a name=&quot;MathJax-Span-424&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;,&lt;/span&gt;&lt;a name=&quot;MathJax-Span-425&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;t&lt;/span&gt;&lt;a name=&quot;MathJax-Span-426&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;)&lt;/span&gt; like the &lt;span style=&quot; font-family:'Courier New,courier';&quot;&gt;centroid&lt;/span&gt; method. When two clusters &lt;a name=&quot;MathJax-Element-61-Frame&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;s&lt;/span&gt; and &lt;a name=&quot;MathJax-Element-62-Frame&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;t&lt;/span&gt; are combined into a new cluster &lt;a name=&quot;MathJax-Element-63-Frame&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;u&lt;/span&gt;, the average of centroids s and t give the new centroid &lt;a name=&quot;MathJax-Element-64-Frame&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;u&lt;/span&gt;. This is also known as the Weighted Pair-Groups Method Centroid (WPGMC) algorithm.&lt;/p&gt;&lt;p&gt;This only valid for Euclidean distances.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="text">
+              <string>&amp;Median</string>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">linkageButtonGroup</string>
+             </attribute>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="linkageWard">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;ward uses the Ward variance minimization algorithm. The new entry &lt;a name=&quot;MathJax-Element-65-Frame&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;d&lt;/span&gt;&lt;a name=&quot;MathJax-Span-442&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;(&lt;/span&gt;&lt;a name=&quot;MathJax-Span-443&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;u&lt;/span&gt;&lt;a name=&quot;MathJax-Span-444&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;,&lt;/span&gt;&lt;a name=&quot;MathJax-Span-445&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;v&lt;/span&gt;&lt;a name=&quot;MathJax-Span-446&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;)&lt;/span&gt; is computed as follows,&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;     ______________________________________&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'STIXSizeTwoSym';&quot;&gt;√&lt;/span&gt;&lt;a name=&quot;MathJax-Element-66-Frame&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;d&lt;/span&gt;&lt;a name=&quot;MathJax-Span-450&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;(&lt;/span&gt;&lt;a name=&quot;MathJax-Span-451&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;u&lt;/span&gt;&lt;a name=&quot;MathJax-Span-452&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;,&lt;/span&gt;&lt;a name=&quot;MathJax-Span-453&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;v&lt;/span&gt;&lt;a name=&quot;MathJax-Span-454&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;)&lt;/span&gt;&lt;a name=&quot;MathJax-Span-455&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;=&lt;/span&gt;&lt;a name=&quot;MathJax-Span-456&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;|&lt;/span&gt;&lt;a name=&quot;MathJax-Span-463&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;v&lt;/span&gt;&lt;a name=&quot;MathJax-Span-464&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;|&lt;/span&gt;&lt;a name=&quot;MathJax-Span-467&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;+&lt;/span&gt;&lt;a name=&quot;MathJax-Span-468&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;|&lt;/span&gt;&lt;a name=&quot;MathJax-Span-471&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;s&lt;/span&gt;&lt;a name=&quot;MathJax-Span-472&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;|&lt;/span&gt;&lt;a name=&quot;MathJax-Span-475&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;T&lt;/span&gt;&lt;a name=&quot;MathJax-Span-476&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;d&lt;/span&gt;&lt;a name=&quot;MathJax-Span-477&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;(&lt;/span&gt;&lt;a name=&quot;MathJax-Span-478&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;v&lt;/span&gt;&lt;a name=&quot;MathJax-Span-479&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;,&lt;/span&gt;&lt;a name=&quot;MathJax-Span-480&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;s&lt;/span&gt;&lt;a name=&quot;MathJax-Span-481&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;)&lt;/span&gt;&lt;a name=&quot;MathJax-Span-483&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;2&lt;/span&gt;&lt;a name=&quot;MathJax-Span-484&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;+&lt;/span&gt;&lt;a name=&quot;MathJax-Span-485&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;|&lt;/span&gt;&lt;a name=&quot;MathJax-Span-490&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;v&lt;/span&gt;&lt;a name=&quot;MathJax-Span-491&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;|&lt;/span&gt;&lt;a name=&quot;MathJax-Span-494&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;+&lt;/span&gt;&lt;a name=&quot;MathJax-Span-495&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;|&lt;/span&gt;&lt;a name=&quot;MathJax-Span-498&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;t&lt;/span&gt;&lt;a name=&quot;MathJax-Span-499&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;|&lt;/span&gt;&lt;a name=&quot;MathJax-Span-502&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;T&lt;/span&gt;&lt;a name=&quot;MathJax-Span-503&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;d&lt;/span&gt;&lt;a name=&quot;MathJax-Span-504&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;(&lt;/span&gt;&lt;a name=&quot;MathJax-Span-505&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;v&lt;/span&gt;&lt;a name=&quot;MathJax-Span-506&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;,&lt;/span&gt;&lt;a name=&quot;MathJax-Span-507&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;t&lt;/span&gt;&lt;a name=&quot;MathJax-Span-508&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;)&lt;/span&gt;&lt;a name=&quot;MathJax-Span-510&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;2&lt;/span&gt;&lt;a name=&quot;MathJax-Span-511&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;−&lt;/span&gt;&lt;a name=&quot;MathJax-Span-512&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;|&lt;/span&gt;&lt;a name=&quot;MathJax-Span-517&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;v&lt;/span&gt;&lt;a name=&quot;MathJax-Span-518&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;|&lt;/span&gt;&lt;a name=&quot;MathJax-Span-521&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;T&lt;/span&gt;&lt;a name=&quot;MathJax-Span-522&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;d&lt;/span&gt;&lt;a name=&quot;MathJax-Span-523&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;(&lt;/span&gt;&lt;a name=&quot;MathJax-Span-524&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;s&lt;/span&gt;&lt;a name=&quot;MathJax-Span-525&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;,&lt;/span&gt;&lt;a name=&quot;MathJax-Span-526&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;t&lt;/span&gt;&lt;a name=&quot;MathJax-Span-527&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;)&lt;/span&gt;&lt;a name=&quot;MathJax-Span-529&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;2&lt;/span&gt;&lt;/p&gt;&lt;p&gt;where &lt;a name=&quot;MathJax-Element-67-Frame&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;u&lt;/span&gt; is the newly joined cluster consisting of clusters &lt;a name=&quot;MathJax-Element-68-Frame&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;s&lt;/span&gt; and &lt;a name=&quot;MathJax-Element-69-Frame&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;t&lt;/span&gt;, &lt;a name=&quot;MathJax-Element-70-Frame&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;v&lt;/span&gt; is an unused cluster in the forest, &lt;a name=&quot;MathJax-Element-71-Frame&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;T&lt;/span&gt;&lt;a name=&quot;MathJax-Span-545&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;=&lt;/span&gt;&lt;a name=&quot;MathJax-Span-546&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;|&lt;/span&gt;&lt;a name=&quot;MathJax-Span-549&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;v&lt;/span&gt;&lt;a name=&quot;MathJax-Span-550&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;|&lt;/span&gt;&lt;a name=&quot;MathJax-Span-553&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;+&lt;/span&gt;&lt;a name=&quot;MathJax-Span-554&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;|&lt;/span&gt;&lt;a name=&quot;MathJax-Span-557&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;s&lt;/span&gt;&lt;a name=&quot;MathJax-Span-558&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;|&lt;/span&gt;&lt;a name=&quot;MathJax-Span-561&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;+&lt;/span&gt;&lt;a name=&quot;MathJax-Span-562&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;|&lt;/span&gt;&lt;a name=&quot;MathJax-Span-565&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral'; font-style:italic;&quot;&gt;t&lt;/span&gt;&lt;a name=&quot;MathJax-Span-566&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;|&lt;/span&gt;, and &lt;a name=&quot;MathJax-Element-72-Frame&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;|&lt;/span&gt;&lt;a name=&quot;MathJax-Span-574&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;∗&lt;/span&gt;&lt;a name=&quot;MathJax-Span-575&quot;/&gt;&lt;span style=&quot; font-family:'STIXGeneral';&quot;&gt;|&lt;/span&gt; is the cardinality of its argument. This is also known as the incremental algorithm.&lt;/p&gt;&lt;p&gt;It tends to produce clusters with the same number of points and can be sensitive to outliers.&lt;/p&gt;&lt;p&gt;This only valid for Euclidean distances.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="text">
+              <string>Ward</string>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">linkageButtonGroup</string>
+             </attribute>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="linkageArchetype">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Create clusters using Archetype CTHs from a .type file. The method caculates the nearest CTH Archetype for each CTH using the selected distance function.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;NOTES:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;It is sometimes the case that not all of the archetypes are used.&lt;/p&gt;&lt;p&gt;There is no support at this time for creating dendrograms using archetypes (maybe later.)&lt;/p&gt;&lt;p&gt;Several of the Projection Basis methods require a dendrogram. At this time, the PCA basis method is always used.&lt;/p&gt;&lt;p&gt; The Custom from File metric is not used because the Archetype files do not have the information required to create a distance matrix. Euclidean distance is used if this option is selected. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="text">
+              <string>Archetype</string>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">linkageButtonGroup</string>
+             </attribute>
+            </widget>
+           </item>
+           <item>
+            <spacer name="verticalSpacer_2">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </widget>
+      </item>
+      <item>
+       <widget class="QFrame" name="choiceFrame">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::NoFrame</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <widget class="QGroupBox" name="choiceBox">
+         <property name="geometry">
+          <rect>
+           <x>3</x>
+           <y>0</y>
+           <width>210</width>
+           <height>181</height>
+          </rect>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="title">
+          <string>Dendrogram Cluster Choice</string>
+         </property>
+         <widget class="QWidget" name="layoutWidget5">
+          <property name="geometry">
+           <rect>
+            <x>17</x>
+            <y>20</y>
+            <width>179</width>
+            <height>145</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="clusterLayout">
+           <item>
+            <widget class="QRadioButton" name="choiceClick">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;After the dendrogram is drawn, click on the figure to select the clusters. An imaginary horizontal line is drawn at the click location. The number of vertical lines it intersects with determines the number of clusters. If you click very low in the figure, you can select hundreds of clusters which will take a very long time to process and which will create hundreds of CTH plot windows. You will probably exceed the maximum number of windows a process is allowed to open (which may be 256) if you do this.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="text">
+              <string>Click On Line</string>
+             </property>
+             <property name="checked">
+              <bool>false</bool>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">choiceButtonGroup</string>
+             </attribute>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="choiceNum">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Enter the number of clusters you want the CTHs to be grouped into.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="text">
+              <string>Number Of Clusters</string>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">choiceButtonGroup</string>
+             </attribute>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="choiceEnterNum">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;Leave this blank to be prompted for the number of clusters later</string>
+             </property>
+             <property name="text">
+              <string>3</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="choiceDist">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The Y axis is the dendrogram is the distance between leaves in the dendrogram. Enter the value you wish to use to determine the clusters. This is similar to Click On Line.  Leave the distance box below blank of you want to wait until after the dendrogram is drawn. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="text">
+              <string>Distance</string>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">choiceButtonGroup</string>
+             </attribute>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="choiceEnterDist">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;Leave this blank to be prompted for the height later</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </widget>
+      </item>
+      <item>
+       <widget class="QFrame" name="basisFrame">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <widget class="QGroupBox" name="basisBox">
+         <property name="geometry">
+          <rect>
+           <x>3</x>
+           <y>0</y>
+           <width>210</width>
+           <height>281</height>
+          </rect>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="title">
+          <string>Projection Basis Points</string>
+         </property>
+         <widget class="QWidget" name="layoutWidget2">
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>13</y>
+            <width>153</width>
+            <height>90</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="basisCheckLayout">
+           <item>
+            <widget class="QRadioButton" name="basisAuto">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Pick the points/CTHs that are most distant from each other to create the coordinate system the CTHs are projected onto. Uses the modified Gram-Schmidt algorithm.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="text">
+              <string>Most Distant Points</string>
+             </property>
+             <property name="checked">
+              <bool>false</bool>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">basisButtonGroup</string>
+             </attribute>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="basisPCA">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use Principal Component Analysis to create a projection basis.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="text">
+              <string>PCA basis</string>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">basisButtonGroup</string>
+             </attribute>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="basisPick">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Pick the CTHs used to create the basis for projections.  Enter the CTH numbers in the controls below. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="text">
+              <string>Pic&amp;k 4 Points</string>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">basisButtonGroup</string>
+             </attribute>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="layoutWidget3">
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>110</y>
+            <width>151</width>
+            <height>161</height>
+           </rect>
+          </property>
+          <layout class="QGridLayout" name="basisPtsLayout">
+           <item row="0" column="0">
+            <widget class="QLabel" name="coordP0Label">
+             <property name="text">
+              <string>p0:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLineEdit" name="coordP0">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="inputMask">
+              <string/>
+             </property>
+             <property name="readOnly">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="coordP1Label">
+             <property name="text">
+              <string>p1:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QLineEdit" name="coordP1">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="inputMask">
+              <string/>
+             </property>
+             <property name="readOnly">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="coordP2Label">
+             <property name="text">
+              <string>p2:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QLineEdit" name="coordP2">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="inputMask">
+              <string/>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="readOnly">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="coorP3Label">
+             <property name="text">
+              <string>p3:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QLineEdit" name="coordP3">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="inputMask">
+              <string/>
+             </property>
+             <property name="readOnly">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </widget>
+      </item>
+      <item>
+       <widget class="QFrame" name="otherFrame">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::NoFrame</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <widget class="QGroupBox" name="otherOptionsBox">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>261</width>
+           <height>441</height>
+          </rect>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>261</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="title">
+          <string>Options</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_4">
+          <item>
+           <widget class="QFrame" name="frame_5">
+            <property name="frameShape">
+             <enum>QFrame::NoFrame</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_2">
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QCheckBox" name="kmeansPlot">
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;Use the K-Means clustering algorithm.  This displays plots on the workspace to the right.  This is a different method of clustering data.&lt;p&gt;This plots two sets.  The first set uses the average CTH from the dendogram CTHs as the initial center of the K-Means clusters.  The second uses the classic method where the K-Means algorithm picks random points as the initial centers.</string>
+               </property>
+               <property name="text">
+                <string>K-Means Plots</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="fuzzyCluster">
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Display the Fuzzy C-Means Clustering Plot. This uses a modified K-Means clustering algorithm, but instead of hard clusters, it returns a set of soft clusters with a membership value for each cluster 0 &amp;lt; value &amp;lt; 1.&lt;/p&gt;&lt;p&gt;For example, if you selct 5 clusters, it will return a list of 5 values for each CTH that indicates its cluster membership. CTHs closer to a cluster center have a high membership value for that cluster and much lower values for other clusters. CTHs near the edge of two clusters can have two or more membership values that are nearly equal. The clusters are assigned using the maximum member value for each cluster.&lt;/p&gt;&lt;p&gt;If the difference between the largest and second largest membership value is less than or equal to the Fuzzy Cutoff value for a CTH, a + marker is drawn in the color of the cluster it almost belongs to. The CTHs selected and the differences are displayed in the Messages and Prompts window.&lt;/p&gt;&lt;p&gt;If the Fuzzy Cutoff value is blank, &amp;lt;=0 or &amp;gt;= 1, then the + markers are not drawn.&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+               <property name="text">
+                <string>Fuzzy C-Means</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QFrame" name="frame_4">
+               <property name="frameShape">
+                <enum>QFrame::NoFrame</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+               <layout class="QHBoxLayout" name="horizontalLayout" stretch="4,2,0,0">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
+                <property name="sizeConstraint">
+                 <enum>QLayout::SetDefaultConstraint</enum>
+                </property>
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="fuzzCutLabel">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>12</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>12</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string>       Fuzzy Cuttoff: </string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="fuzzyClusterCutoff">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>16</height>
+                   </size>
+                  </property>
+                  <property name="toolTip">
+                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Enter the Fuzzy Cutoff value.&lt;/p&gt;&lt;p&gt;Enter zero, one, or blank for no cutoff value.&lt;/p&gt;&lt;p&gt;See help for Fuzzy C-Means above for more info.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  </property>
+                  <property name="text">
+                   <string>0.1</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                  </property>
+                  <property name="clearButtonEnabled">
+                   <bool>false</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="fuzzyCutSpacer">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeType">
+                   <enum>QSizePolicy::Expanding</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>50</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="frame_6">
+            <property name="frameShape">
+             <enum>QFrame::NoFrame</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_3">
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QCheckBox" name="errorbarsShow">
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;Select this to display plots of the mean firing rate of each bin and error bars that represent the scaled standard error for each bin.&lt;p&gt;The scaled standard error is the standard deviation of the bin dividied by the square root of the number of bins.  This is scaled by (max mean for all bins)/(curr bin mean). </string>
+               </property>
+               <property name="text">
+                <string>Error Bar Plots</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="pairWise">
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;Create a 2D projection of 2 CTHs, using the Zero Flat as the third point.  The Zero Flat will be the origin. It can take a long time to create these plots.</string>
+               </property>
+               <property name="text">
+                <string>Pair-Wise Plots</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="typePairs">
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select this to show a pair-wise comparison of each Archetype CTH and the distance to its cluster members and to every other Archytpe CTH and its members.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;The left-most bar is the location of the viewpoint Archetype. Bars that are the same color and above the X axis are members of its cluster.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;There is one bar that is above the X axis that is the second cluster's color. This is the second archetype. The bars below the X axis are members of the second Archetypes cluster. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+               <property name="text">
+                <string>Pair-Wise Archetype Plots</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="curveShow">
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Display curves that have been fitted to CTHs using one-tick bins.  This is independed of the number of bins used in the CTH displays.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+               <property name="text">
+                <string>Curve Fit Plots</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="curveDerive">
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Display the derivatives of fitted curves. Note that in many cases, close knots will cause very large delta Y values. The scaling causes the curves to be displayed as a flat line with one or more large spikes. The curves have been scaled to maximize the detail in the smaller delta Y values at the expense of clipping the spikes.  The criteria is that 90% of the points are displayed.  This filters out the extreme delta Y points for most of the plots.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+               <property name="text">
+                <string>Show Curve Derivative</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="flatPlots">
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;For large data sets, it can take a very long time to create the plots for the flats. Select this if you want to see flat-related plots.&lt;/p&gt;&lt;p&gt;The Zero Flat, which you see referenced in other help mesasges, is a synthetic CTH that is created that uses the largest bin value from all the CTHs as the value for of its bin values.  The mean is this value and the standard deviation is zero.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+               <property name="text">
+                <string>Flat Plots</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="noFlats">
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Normally, flats are excluded from clustering operations. Select this option to include all CTHs in the clustering operations.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+               <property name="text">
+                <string>Include Flats For Clustering</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="isoMap">
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Create Isomap plots. Isomapping produces a lower dimension embedding of points while trying to maintain the geodesic distance between points.  See http://isomap.stanford.edu/.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+               <property name="text">
+                <string>Isomap Plots</string>
+               </property>
+               <property name="checked">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="isoMapOverlay">
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Show the neighborhood graph for the Isomap Plot. These show the connections between neighboring points in the isomap. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+               <property name="text">
+                <string>Isomap Neighbor Grid</string>
+               </property>
+               <property name="checked">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="isoMapEmbed">
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Sort each dimension of 5 dimension isomap embedding, sort each axis independently, then show the corresponding CTHs in the sort order for each axis.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+               <property name="text">
+                <string>Isomap Embedded Dimensions </string>
+               </property>
+               <property name="checked">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="isoMapColor">
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If IsomapEmbedded Dimensions is enabled, sort each axis of the up to 5 5 dimension isomap embedding and display the 3D projection using a color spectrum.  Note this is not related to the colors and contents of the Isomap Embedded Dimension plots.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+               <property name="text">
+                <string>Isomap Color Projection</string>
+               </property>
+               <property name="checked">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="logDist">
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Some dendogram linkage functions group the clusters such that they are large distances apart. This results in the colored leaf nodes being drawn as very short lines. It can be almost impossible to see what the colors are.&lt;/p&gt;&lt;p&gt;Using log(distance) for the Y axis compresses the distance, so the leaf nodes tend to be much longer and the colors more visible.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+               <property name="text">
+                <string>Dendogram Y=log(distance)</string>
+               </property>
+               <property name="checked">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <spacer name="verticalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QFrame" name="frame_3">
+            <property name="frameShape">
+             <enum>QFrame::NoFrame</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_2">
+             <item>
+              <spacer name="horizontalSpacer_2">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QPushButton" name="selAll">
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&amp;lt;html&amp;gt;&amp;lt;head/&amp;gt;&amp;lt;body&amp;gt;Select all the options.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+               <property name="text">
+                <string>Select All</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="selNone">
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&amp;lt;html&amp;gt;&amp;lt;head/&amp;gt;&amp;lt;body&amp;gt;Deselect all the options.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+               <property name="text">
+                <string>Deselect All</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_3">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1600</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu_File">
+    <property name="title">
+     <string>&amp;File</string>
+    </property>
+    <addaction name="separator"/>
+    <addaction name="actionQuit"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionHelp"/>
+   </widget>
+   <addaction name="menu_File"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <action name="actionClose">
+   <property name="text">
+    <string>&amp;Quit</string>
+   </property>
+  </action>
+  <action name="actionHelp">
+   <property name="text">
+    <string>Help</string>
+   </property>
+  </action>
+  <action name="actionQuit">
+   <property name="text">
+    <string>Quit</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>cthGuiDropEdit</class>
+   <extends>QLineEdit</extends>
+   <header>cthguidropedit.h</header>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>filePath</tabstop>
+  <tabstop>fsysTree</tabstop>
+  <tabstop>centroidTree</tabstop>
+  <tabstop>pdistFromFile</tabstop>
+  <tabstop>pdistEuclidean</tabstop>
+  <tabstop>pdistSeuclidean</tabstop>
+  <tabstop>pdistCityblock</tabstop>
+  <tabstop>pdistCosine</tabstop>
+  <tabstop>pdistCorrelation</tabstop>
+  <tabstop>pdistSpearman</tabstop>
+  <tabstop>pdistChebychev</tabstop>
+  <tabstop>linkageSingle</tabstop>
+  <tabstop>linkageComplete</tabstop>
+  <tabstop>linkageAverage</tabstop>
+  <tabstop>linkageWeighted</tabstop>
+  <tabstop>linkageCentroid</tabstop>
+  <tabstop>linkageMedian</tabstop>
+  <tabstop>linkageWard</tabstop>
+  <tabstop>linkageArchetype</tabstop>
+  <tabstop>choiceClick</tabstop>
+  <tabstop>choiceNum</tabstop>
+  <tabstop>choiceEnterNum</tabstop>
+  <tabstop>choiceDist</tabstop>
+  <tabstop>choiceEnterDist</tabstop>
+  <tabstop>basisAuto</tabstop>
+  <tabstop>basisPCA</tabstop>
+  <tabstop>basisPick</tabstop>
+  <tabstop>coordP0</tabstop>
+  <tabstop>coordP1</tabstop>
+  <tabstop>coordP2</tabstop>
+  <tabstop>coordP3</tabstop>
+  <tabstop>kmeansPlot</tabstop>
+  <tabstop>fuzzyCluster</tabstop>
+  <tabstop>fuzzyClusterCutoff</tabstop>
+  <tabstop>errorbarsShow</tabstop>
+  <tabstop>pairWise</tabstop>
+  <tabstop>curveShow</tabstop>
+  <tabstop>curveDerive</tabstop>
+  <tabstop>flatPlots</tabstop>
+  <tabstop>isoMap</tabstop>
+  <tabstop>isoMapOverlay</tabstop>
+  <tabstop>isoMapEmbed</tabstop>
+  <tabstop>isoMapColor</tabstop>
+  <tabstop>logDist</tabstop>
+  <tabstop>selAll</tabstop>
+  <tabstop>selNone</tabstop>
+  <tabstop>modDepth1</tabstop>
+  <tabstop>modDepth2</tabstop>
+  <tabstop>stereoPerExp</tabstop>
+  <tabstop>varBarY</tabstop>
+  <tabstop>errPlotScale</tabstop>
+  <tabstop>isoVarBarY</tabstop>
+  <tabstop>screenCap</tabstop>
+  <tabstop>plot2D</tabstop>
+  <tabstop>colorOn</tabstop>
+  <tabstop>copheneticCalc</tabstop>
+  <tabstop>inconsistencyCalc</tabstop>
+  <tabstop>inconsistentDepth</tabstop>
+  <tabstop>sendOctave</tabstop>
+  <tabstop>scrollFwd</tabstop>
+  <tabstop>scrollBack</tabstop>
+  <tabstop>startOver</tabstop>
+  <tabstop>closeInfo</tabstop>
+  <tabstop>getCTHInfo</tabstop>
+  <tabstop>getCTHInfoText</tabstop>
+  <tabstop>saveClusters</tabstop>
+  <tabstop>saveClustersData</tabstop>
+  <tabstop>sendParam</tabstop>
+  <tabstop>sendparamText</tabstop>
+  <tabstop>selectStereo</tabstop>
+  <tabstop>selectStereoData</tabstop>
+  <tabstop>exportAtlas</tabstop>
+  <tabstop>exportAtlasText</tabstop>
+  <tabstop>exportPairs</tabstop>
+  <tabstop>exportPairsText</tabstop>
+  <tabstop>exportCentroids</tabstop>
+  <tabstop>exportCentroidsText</tabstop>
+  <tabstop>sendCmd</tabstop>
+  <tabstop>sendCmdText</tabstop>
+  <tabstop>doQuit</tabstop>
+  <tabstop>guiConnect</tabstop>
+  <tabstop>guiInfo</tabstop>
+  <tabstop>typePairs</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+ <buttongroups>
+  <buttongroup name="choiceButtonGroup"/>
+  <buttongroup name="pdistButtonGroup"/>
+  <buttongroup name="linkageButtonGroup"/>
+  <buttongroup name="basisButtonGroup"/>
+ </buttongroups>
+</ui>

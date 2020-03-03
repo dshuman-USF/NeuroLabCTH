@@ -1,0 +1,1 @@
+PKG_CXXFLAGS += `Rscript -e "Rcpp:::CxxFlags()"` -std=gnu++1y

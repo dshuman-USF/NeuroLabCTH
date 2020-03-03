@@ -1,0 +1,7 @@
+Package: csplinedesx
+Version: 1.3.14
+Title: Local C++ versions of R csplinedes function.
+Description: Local C++ version of R csplinedes function.
+Author:  Russ O'Connor
+Maintainer: Russ O'Connor. <roconnor@health.usf.edu>
+License: GPL (>= 2)

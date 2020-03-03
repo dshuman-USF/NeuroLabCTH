@@ -1,0 +1,85 @@
+
+The CTH clustering software consists of four sub-projects.
+
+The first two take experiment data as input and create information about the
+data as output.  The second two are data visualization tools for analyzing and
+manipulating the information.
+
+1. cth_cluster
+
+   This program uses an excel spreadsheet file containing lists of paths,
+   filenames, and other info about other spreadsheet files, other text files,
+   and recording information in .edt, .bdt. and .adt files.  It will scan the
+   files listed in the input file and create one or more output files that
+   contain information for octave and R.  It can also optionally create a
+   standard .csv file and a .csv file that the ggobi utility can use.  
+
+   There are many flags to control what it does, typing 
+
+   cth_cluster -h
+
+   shows what they are.
+
+2. cth_curve.R
+
+   This is an R program that takes an output file from cth_cluster and performs
+   a circular b-spline curve fit to the CTH data.  The output is a text file
+   that can be read back in by cth_cluster to include the curve information in
+   its output.  It can take a long time to create the curve fitting
+   information.  This is independent of, for example, the number of bins used
+   to create the CTHs.  It is possible to have cth_cluster invoke this program,
+   or it can be ran in stand-alone mode.
+
+3. Octave scripts
+
+   These live in a sibling directory, octave-cth/inst.  The entry point for the
+   data visualization tools is cth_project.m.  There are two ways to run
+   cth_project.m, in an interactive mode in a terminal window, or using a gui.
+   In the release package, two convenience scripts are provided, cth_gui and
+   cth_term.
+
+   The run-time dependencies should take care of installing octave and the
+   required octave packages if they are not already installed.
+
+3. The gui.
+
+   This is a Qt app that is launched by cth_project.m  Once it starts, it
+   connects to the cth_project.m using a socket.  The two processes chatter
+   back and forth using this.  While most of the feedback occurs in a text
+   window in the gui, problems and crashes will produce output in the terminal
+   window where you started octave.
+
+
+Development
+   The octave scripts are just text files, so they are easy to modify.  It is
+   also easy to create new ones.  For debugging, you can run octave in a
+   terminal window are an gui.  You can set breakpoints, type in commands to
+   view and manipulate variables interactively, all kinds of nifty stuff.
+
+   Making changes and adding features to the Qt gui is more involved.  If you
+   just want to modify or add non-gui code, the standard edit-make will do.  If
+   you want to modify or add to the gui, the only practical way to do this is
+   the use qtcreator.  This is a build-depends item, so it should get installed
+   if you grab the sources.
+
+   You should launch this from the directory the cthgui sources are.  The
+   command is:
+
+   qtcreator cthgui.pro
+
+   The first time you run it, you need to set up the configuration.  By default
+   it wants to create a Release and Debug directory.  I deselect the Release
+   option and change the path to the current directory for the Debug option.
+   Unfortunately, it uses hardwired path names, so it is not practical to set
+   this up as part of the package.  Once you are finished with this, click on
+   the project icon on the left, and deselect the "shadow build" option on the
+   project options page.  Like all ide's, this one has a ton of customization
+   options.  You can do gui layout changes and also build and debug the cthgui
+   app using qtcreator.
+
+   The qtcreator package uses qmake to generate a makefile.  To avoid
+   clobbering automake's Makefile, a line in cthgui.pro tells qtcreator to use
+   Makefile.qt as the name of its output.  You can type make -f Makefile.qt if
+   you want to use it outside of qtcreator.
+
+

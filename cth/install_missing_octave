@@ -1,0 +1,25 @@
+#!/usr/bin/octave -qfW
+# some octave packages are not in the debian repo
+# so we have to install them from sourceforge 
+
+list={"fuzzy-logic-toolkit"};
+
+warning("off");
+
+for pkgs=1:length(list)
+   try
+      cmd=sprintf("pkg list %s",list{pkgs});
+      is_inst=eval(cmd);
+      if length(is_inst) == 0
+         printf("%s is not installed, installing it now (this may take a while. . . )\n",list{pkgs});
+         cmd=sprintf("pkg install -forge %s",list{pkgs});
+         eval(cmd);
+         printf("Installation is complete\n");
+      else
+         printf("Package %s already installed\n",list{pkgs});
+      end
+   catch
+     disp("There was a problem installing the missing packages.");
+     disp("They may need to be installed by hand.");
+   end_try_catch
+end

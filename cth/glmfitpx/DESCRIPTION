@@ -1,0 +1,7 @@
+Package: glmfitpx
+Version: 1.3.14
+Title: Local C++ versions of R glmfit function.
+Description: Local C++ version of R glmfit function.
+Author:  Russ O'Connor
+Maintainer: Russ O'Connor. <roconnor@health.usf.edu>
+License: GPL (>= 2)
